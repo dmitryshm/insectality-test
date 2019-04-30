@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 73888932}
   - component: {fileID: 73888934}
   - component: {fileID: 73888933}
+  - component: {fileID: 73888935}
   m_Layer: 0
   m_Name: MechSpider FABRIK
   m_TagString: Untagged
@@ -363,6 +364,25 @@ MonoBehaviour:
   minHeight: 3
   raycastHeight: 15
   raycastDistance: 5
+--- !u!95 &73888935
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73888931}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c923bd362c8a4629a62597a162133d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &89915347 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: dce249a3642fd4545af6e17f16431483,
@@ -25584,7 +25604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: dce249a3642fd4545af6e17f16431483, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.39999962
+      value: -9.4
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: dce249a3642fd4545af6e17f16431483, type: 3}
       propertyPath: m_LocalRotation.x
@@ -25601,6 +25621,14 @@ PrefabInstance:
     - target: {fileID: 400006, guid: dce249a3642fd4545af6e17f16431483, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: dce249a3642fd4545af6e17f16431483, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: dce249a3642fd4545af6e17f16431483, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: dce249a3642fd4545af6e17f16431483, type: 3}
       propertyPath: m_StaticEditorFlags
