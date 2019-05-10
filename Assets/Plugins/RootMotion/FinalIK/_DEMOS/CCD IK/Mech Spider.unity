@@ -347,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 512
   scale: 1
   body: {fileID: 886902194}
   legs:
@@ -23927,7 +23927,7 @@ GameObject:
   - component: {fileID: 1798912088}
   - component: {fileID: 1798912087}
   - component: {fileID: 1798912086}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25027,7 +25027,7 @@ GameObject:
   - component: {fileID: 1896785552}
   - component: {fileID: 1896785554}
   - component: {fileID: 1896785553}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
