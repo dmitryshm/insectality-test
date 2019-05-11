@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HitController : MonoBehaviour
 {
+    public int m_DamageAmount = 30;
+
     public enum DamageType
     {
         LegF
@@ -30,8 +32,27 @@ public class HitController : MonoBehaviour
     {
         if (type == DamageType.LegF)
         {
-            m_HealthScore -= 5;
+            m_HealthScore -= m_DamageAmount;
         }
+        if (m_HealthScore < 1)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        RootMotion.Demos.MechSpider script1 = gameObject.GetComponent<RootMotion.Demos.MechSpider>();
+        script1.enabled = false;
+        foreach(RootMotion.Demos.MechSpiderLeg leg in script1.legs)
+        {
+            RootMotion.Demos.MechSpiderLeg legScript = leg.GetComponent<RootMotion.Demos.MechSpiderLeg>();
+            legScript.enabled = false;
+            RootMotion.FinalIK.FABRIK fabrikScript = leg.GetComponent<RootMotion.FinalIK.FABRIK>();
+            fabrikScript.enabled = false;
+        }
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
     }
 
     private void OnTriggerEnter(Collider other)
