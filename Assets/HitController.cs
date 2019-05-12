@@ -48,9 +48,7 @@ public class HitController : MonoBehaviour
         foreach(RootMotion.Demos.MechSpiderLeg leg in script1.legs)
         {
             RootMotion.Demos.MechSpiderLeg legScript = leg.GetComponent<RootMotion.Demos.MechSpiderLeg>();
-            legScript.enabled = false;
-            RootMotion.FinalIK.FABRIK fabrikScript = leg.GetComponent<RootMotion.FinalIK.FABRIK>();
-            fabrikScript.enabled = false;
+            legScript.enabled = false;           
         }
 
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
