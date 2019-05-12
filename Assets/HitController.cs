@@ -44,6 +44,7 @@ public class HitController : MonoBehaviour
     {
         RootMotion.Demos.MechSpider script1 = gameObject.GetComponent<RootMotion.Demos.MechSpider>();
         script1.enabled = false;
+
         foreach(RootMotion.Demos.MechSpiderLeg leg in script1.legs)
         {
             RootMotion.Demos.MechSpiderLeg legScript = leg.GetComponent<RootMotion.Demos.MechSpiderLeg>();
@@ -51,6 +52,7 @@ public class HitController : MonoBehaviour
             RootMotion.FinalIK.FABRIK fabrikScript = leg.GetComponent<RootMotion.FinalIK.FABRIK>();
             fabrikScript.enabled = false;
         }
+
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.isKinematic = false;
     }
