@@ -5,10 +5,26 @@ using UnityEngine;
 public class Kicks : StateMachineBehaviour
 {
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (stateInfo.IsName("LowJump 1"))
+        {
+            RootMotion.Demos.MechSpider obj = animator.gameObject.GetComponent<RootMotion.Demos.MechSpider>();
+            if (obj != null)
+            {
+                obj.enabled = false;
+                foreach(RootMotion.Demos.MechSpiderLeg leg in obj.legs)
+                {
+                    leg.enabled = false;
+                    RootMotion.FinalIK.IK ik = leg.GetComponentInParent<RootMotion.FinalIK.IK>();
+                    if (ik != null)
+                    {
+                        ik.enabled = false;
+                    }
+                }
+            }
+        }
+    }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -19,6 +35,10 @@ public class Kicks : StateMachineBehaviour
             {
                 animator.SetBool("LegFKick", true);
             }
+            else if (Input.GetKeyDown(KeyCode.G))
+            {
+                animator.SetBool("LowJump", true);
+            }
         }
     }
 
@@ -28,6 +48,24 @@ public class Kicks : StateMachineBehaviour
         if (stateInfo.IsName("Leg F Kick"))
         {
             animator.SetBool("LegFKick", false);
+        }
+        else if (stateInfo.IsName("LowJump 1"))
+        {
+            animator.SetBool("LowJump", false);
+            RootMotion.Demos.MechSpider obj = animator.gameObject.GetComponent<RootMotion.Demos.MechSpider>();
+            if (obj != null)
+            {
+                foreach (RootMotion.Demos.MechSpiderLeg leg in obj.legs)
+                {
+                    RootMotion.FinalIK.IK ik = leg.GetComponentInParent<RootMotion.FinalIK.IK>();
+                    if (ik != null)
+                    {
+                        ik.enabled = true;
+                    }
+                    leg.enabled = true;
+                }
+                obj.enabled = true;
+            }
         }
     }
 
