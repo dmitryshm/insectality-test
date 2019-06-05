@@ -23,6 +23,11 @@ public class Kicks : StateMachineBehaviour
                     }
                 }
             }
+            RootMotion.Demos.MechSpiderController ctl = animator.gameObject.GetComponent<RootMotion.Demos.MechSpiderController>();
+            if (ctl != null)
+            {
+                ctl.enabled = false;
+            }
         }
     }
 
@@ -52,6 +57,11 @@ public class Kicks : StateMachineBehaviour
         else if (stateInfo.IsName("LowJump 1"))
         {
             animator.SetBool("LowJump", false);
+            RootMotion.Demos.MechSpiderController ctl = animator.gameObject.GetComponent<RootMotion.Demos.MechSpiderController>();
+            if (ctl != null)
+            {
+                ctl.enabled = true;
+            }
             RootMotion.Demos.MechSpider obj = animator.gameObject.GetComponent<RootMotion.Demos.MechSpider>();
             if (obj != null)
             {
@@ -65,6 +75,7 @@ public class Kicks : StateMachineBehaviour
                     leg.enabled = true;
                 }
                 obj.enabled = true;
+                animator.gameObject.transform.position = obj.body.position;
             }
         }
     }

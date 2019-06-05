@@ -101,5 +101,5 @@ namespace RootMotion.Demos {
 			
 			return normal;
 		}
-	}
+    }
 }

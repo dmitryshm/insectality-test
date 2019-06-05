@@ -55,6 +55,11 @@ public class HitController : MonoBehaviour
         rb.isKinematic = false;
     }
 
+    void OnJumpEnd()
+    {
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "SpiderFoot")
