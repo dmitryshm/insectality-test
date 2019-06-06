@@ -32,24 +32,5 @@ namespace RootMotion.Demos {
 			// Rotating the spider to camera forward
 			transform.rotation = Quaternion.RotateTowards(transform.rotation, cameraLookRotation, Time.deltaTime * turnSpeed);
 		}
-
-        void OnAnimatorMove()
-        {
-            Animator anim = GetComponent<Animator>();
-            if (anim == null)
-            {
-                return;
-            }
-            if (anim.GetBool("LowJump"))
-            {
-                MechSpider ms = GetComponent<MechSpider>();
-                if (ms == null)
-                {
-                    return;
-                }
-                transform.Translate(ms.body.position - transform.position);
-            }
-        }
     }
-
 }
