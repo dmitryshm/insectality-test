@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class Kicks : StateMachineBehaviour
 {
+    // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (stateInfo.IsName("Idle 1"))
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                animator.SetBool("LegFKick", true);
+            }
+            else if (Input.GetKeyDown(KeyCode.G))
+            {
+                animator.SetBool("LowJump", true);
+            }
+            else if (Input.GetKeyDown(KeyCode.V))
+            {
+                animator.SetBool("VictoryDance", true);
+            }
+        }
+    }
+
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -13,7 +33,7 @@ public class Kicks : StateMachineBehaviour
             if (obj != null)
             {
                 obj.enabled = false;
-                foreach(RootMotion.Demos.MechSpiderLeg leg in obj.legs)
+                foreach (RootMotion.Demos.MechSpiderLeg leg in obj.legs)
                 {
                     leg.enabled = false;
                     RootMotion.FinalIK.IK ik = leg.GetComponentInParent<RootMotion.FinalIK.IK>();
@@ -29,20 +49,17 @@ public class Kicks : StateMachineBehaviour
                 ctl.enabled = false;
             }
         }
-    }
-
-    // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (stateInfo.IsName("Idle 1"))
+        else if (stateInfo.IsName("VictoryDance"))
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            RootMotion.Demos.MechSpider obj = animator.gameObject.GetComponent<RootMotion.Demos.MechSpider>();
+            if (obj != null)
             {
-                animator.SetBool("LegFKick", true);
+                obj.enabled = false;
             }
-            else if (Input.GetKeyDown(KeyCode.G))
+            RootMotion.Demos.MechSpiderController ctl = animator.gameObject.GetComponent<RootMotion.Demos.MechSpiderController>();
+            if (ctl != null)
             {
-                animator.SetBool("LowJump", true);
+                ctl.enabled = false;
             }
         }
     }
@@ -76,6 +93,20 @@ public class Kicks : StateMachineBehaviour
                 }
                 obj.enabled = true;
                 animator.gameObject.transform.position = obj.body.position;
+            }
+        }
+        else if (stateInfo.IsName("VictoryDance"))
+        {
+            animator.SetBool("VictoryDance", false);
+            RootMotion.Demos.MechSpider obj = animator.gameObject.GetComponent<RootMotion.Demos.MechSpider>();
+            if (obj != null)
+            {
+                obj.enabled = true;
+            }
+            RootMotion.Demos.MechSpiderController ctl = animator.gameObject.GetComponent<RootMotion.Demos.MechSpiderController>();
+            if (ctl != null)
+            {
+                ctl.enabled = true;
             }
         }
     }
